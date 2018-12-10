@@ -19,5 +19,3 @@ function (cbt::CbNode)(data, stage)
     trigger(data2, child, stage)
   end
 end
-
-@inline idcb(x, stage) = x

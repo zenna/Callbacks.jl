@@ -1,6 +1,7 @@
-authors = ["Zenna Tavares <zennatavares@gmail.com>"]
 name = "Callbacks"
 uuid = "5c501fca-fc9b-11e8-1fb9-dbe118bb7e64"
+authors = ["Zenna Tavares <zennatavares@gmail.com>"]
 version = "0.1.0"
 
 [deps]
+ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"

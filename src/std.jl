@@ -3,6 +3,8 @@
 runall(f) = f
 runall(fs::AbstractVector) = (data, stage) -> foreach(f -> handlesignal(f(data, stage)), fs)
 
+@inline idcb(x, stage) = x
+
 "Higher order function that makes a callback run just once every n"
 function everyn(callback, n::Integer)
   everyncb(data, stage) = nothing
@@ -67,7 +69,7 @@ donothing(data, stage) = nothing
 
 "Show progress meter"
 function showprogress(n)
-  p = Progress(n, 1)
+  p = ProgressMeter.Progress(n, 1)
   updateprogress(data, stage) = nothing # Do nothing in other stages
   function updateprogress(data, stage::Type{Outside})
     ProgressMeter.next!(p)
