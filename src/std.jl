@@ -8,7 +8,7 @@ runall(fs::AbstractVector) = (data, stage) -> foreach(f -> handlesignal(f(data, 
 "Higher order function that makes a callback run just once every n"
 function everyn(callback, n::Integer)
   everyncb(data, stage) = nothing
-  function everyncb(data, stage::Type{Outside})
+  function everyncb(data, stage::Type{IterEnd})
     if data.i % n == 0
       return callback(data, stage)
     else
@@ -71,14 +71,14 @@ donothing(data, stage) = nothing
 function showprogress(n)
   p = ProgressMeter.Progress(n, 1)
   updateprogress(data, stage) = nothing # Do nothing in other stages
-  function updateprogress(data, stage::Type{Outside})
+  function updateprogress(data, stage::Type{IterEnd})
     ProgressMeter.next!(p)
   end
 end
 
 "Stop if nans or Inf are present (-Inf) still permissible"
 stopnanorinf(data, stage) = nothing
-function stopnanorinf(data, stage::Type{Outside})
+function stopnanorinf(data, stage::Type{IterEnd})
   if isnan(data.p)
     println("p is $(data.p)")
     throw(NaNError())

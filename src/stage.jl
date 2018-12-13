@@ -3,7 +3,7 @@
 abstract type Stage end
 
 ""
-abstract type Inside <: Stage end
+abstract type HMCStep <: Stage end
 
-"Stage at end of MHStep"
-abstract type Outside <: Stage end
+"End of Iteration"
+abstract type IterEnd <: Stage end
