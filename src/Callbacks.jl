@@ -1,14 +1,18 @@
+"Function Compositions"
 module Callbacks
 
 import ProgressMeter
 
+include("mmap.jl")
 include("cbnode.jl")
 include("error.jl")
 include("stage.jl")
 include("signal.jl")
 include("std.jl")
 
-export  everyn,
+export  mapf,
+        foreachf,
+        everyn,
         →,
         donothing,
         showprogress,

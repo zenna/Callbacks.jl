@@ -22,6 +22,8 @@ end
 ## Callback Augmenters
 ## ===================
 #
+
+# From Flux
 """
 Returns a function that when invoked, will only be triggered at most once
 during `timeout` seconds. Normally, the throttled function will run
@@ -63,7 +65,6 @@ function throttle(f, timeout; leading = true, trailing = false) # From Flux (tha
   end
 end
 
-
 "As the name suggests"
 donothing(data, stage) = nothing
 
@@ -88,4 +89,17 @@ function stopnanorinf(data, stage::Type{IterEnd})
     throw(InfError())
     return Stop
   end
+end
+
+"Capture a vector of value of type `T`"
+function capturevals(key::Symbol, ::Type{T} = Any) where T
+  xs = T[]
+
+  innercap(data, stage) = nothing # Do nothing in other stages
+  function innercap(data, stage::Type{IterEnd})
+    x_ = getfield(data, key)
+    push!(xs, x_)
+    # push!(ys, data.i)
+  end
+  (cb = innercap, capture = xs)
 end
