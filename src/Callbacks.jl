@@ -27,6 +27,7 @@ export  mapf,
         HMCStep,
         IterEnd,
         default_cbs_tpl,
-        default_cbs
+        default_cbs,
+        capturevals
 
 end

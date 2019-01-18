@@ -18,6 +18,19 @@ function everyn(callback, n::Integer)
   return everyncb
 end
 
+function everyn(n::Integer)
+  i = 0
+  everyncb(data, stage) = nothing
+  function everyncb(data, stage::Type{IterEnd})
+    if i % n == 0
+      i = i + 1
+      return data
+    else
+      i = i + 1
+      nothing
+    end
+  end
+end
 
 ## Callback Augmenters
 ## ===================
@@ -99,7 +112,7 @@ function capturevals(key::Symbol, ::Type{T} = Any) where T
   function innercap(data, stage::Type{IterEnd})
     x_ = getfield(data, key)
     push!(xs, x_)
-    # push!(ys, data.i)
+    (vals = xs,)
   end
   (cb = innercap, capture = xs)
 end
