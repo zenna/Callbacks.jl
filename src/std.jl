@@ -1,16 +1,15 @@
 # Standard Callbacks
 
 runall(f) = f
-runall(fs::AbstractVector) = (data, stage) -> foreach(f -> handlesignal(f(data, stage)), fs)
+runall(fs::AbstractVector) = (data) -> foreach(f -> handlesignal(f(data)), fs)
 
-@inline idcb(x, stage) = x
+@inline idcb(x) = x
 
 "Higher order function that makes a callback run just once every n"
 function everyn(callback, n::Integer)
-  everyncb(data, stage) = nothing
-  function everyncb(data, stage::Type{IterEnd})
+  function everyncb(data)
     if data.i % n == 0
-      return callback(data, stage)
+      return callback(data)
     else
       nothing
     end
@@ -20,8 +19,8 @@ end
 
 function everyn(n::Integer)
   i = 0
-  everyncb(data, stage) = nothing
-  function everyncb(data, stage::Type{IterEnd})
+  everyncb(data) = nothing
+  function everyncb(data)
     if i % n == 0
       i = i + 1
       return data
@@ -32,9 +31,7 @@ function everyn(n::Integer)
   end
 end
 
-## Callback Augmenters
-## ===================
-#
+# Callback Augmenters
 
 # From Flux
 """
@@ -79,20 +76,18 @@ function throttle(f, timeout; leading = true, trailing = false) # From Flux (tha
 end
 
 "As the name suggests"
-donothing(data, stage) = nothing
+donothing(data) = nothing
 
 "Show progress meter"
 function showprogress(n)
   p = ProgressMeter.Progress(n, 1)
-  updateprogress(data, stage) = nothing # Do nothing in other stages
-  function updateprogress(data, stage::Type{IterEnd})
+  function updateprogress(data)
     ProgressMeter.next!(p)
   end
 end
 
 "Stop if nans or Inf are present (-Inf) still permissible"
-stopnanorinf(data, stage) = nothing
-function stopnanorinf(data, stage::Type{IterEnd})
+function stopnanorinf(data)
   if isnan(data.p)
     println("p is $(data.p)")
     throw(NaNError())
@@ -107,9 +102,7 @@ end
 "Capture a vector of value of type `T`"
 function capturevals(key::Symbol, ::Type{T} = Any) where T
   xs = T[]
-
-  innercap(data, stage) = nothing # Do nothing in other stages
-  function innercap(data, stage::Type{IterEnd})
+  function innercap(data)
     x_ = getfield(data, key)
     push!(xs, x_)
     (vals = xs,)
