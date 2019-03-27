@@ -8,8 +8,7 @@ ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
 UnicodePlots = "b8865327-cd53-5732-bb35-84acbb429228"
 
 [extras]
-Lens = "496038af-b016-571c-b31e-8262695ac102"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
-test = ["Test", "Lens"]
+test = ["Test"]

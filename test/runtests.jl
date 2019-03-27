@@ -1,4 +1,6 @@
-using Callbacks, Lens
+using Callbacks, Pkg
+Pkg.add(PackageSpec("Lens", rev = "master"))
+using Lens
 
 struct Loop end
 function simulation()
