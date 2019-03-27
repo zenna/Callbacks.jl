@@ -19,7 +19,6 @@ end
 
 function everyn(n::Integer)
   i = 0
-  everyncb(data) = nothing
   function everyncb(data)
     if i % n == 0
       i = i + 1
