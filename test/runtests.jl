@@ -1,5 +1,5 @@
-using Callbacks, Pkg
-Pkg.add(PackageSpec("Lens", rev = "master"))
+using Callbacks
+# Pkg.add(PackageSpec("Lens", rev = "master"))
 using Lens
 
 struct Loop end

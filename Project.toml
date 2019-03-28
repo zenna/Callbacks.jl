@@ -9,7 +9,7 @@ UnicodePlots = "b8865327-cd53-5732-bb35-84acbb429228"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
-InteractiveUtils = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
+Lens = "496038af-b016-571c-b31e-8262695ac102"
 
 [targets]
-test = ["Test", "InteractiveUtils"]
+test = ["Test", "Lens"]
