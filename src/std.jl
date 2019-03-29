@@ -17,6 +17,12 @@ function everyn(callback, n::Integer)
   return everyncb
 end
 
+"Returns its inpu every after being called `n` times
+
+```julia
+everyn(10) → println`
+```
+"""
 function everyn(n::Integer)
   i = 0
   function everyncb(data)
