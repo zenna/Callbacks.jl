@@ -12,6 +12,6 @@ function simulation()
   end
 end
 
-@leval Loop => plotscalar() simlulation()
+@leval Loop => plotscalar() simulation()
 
 @leval Loop => (everyn(1000000) → plotscalar()) simulation()
