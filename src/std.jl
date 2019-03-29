@@ -17,10 +17,10 @@ function everyn(callback, n::Integer)
   return everyncb
 end
 
-"Returns its inpu every after being called `n` times
+"""Returns its inpu every after being called `n` times
 
 ```julia
-everyn(10) → println`
+everyn(10) → println
 ```
 """
 function everyn(n::Integer)
@@ -104,7 +104,20 @@ function stopnanorinf(data)
   end
 end
 
-"Capture a vector of value of type `T`"
+"Capture a vector of value of type `T`
+
+```julia
+function f(x; cb)
+  for i = 1:10
+    x += 0.0
+    cb(x)
+  end
+end
+
+cb, xs = capturevals(:x)
+f(0.5; cb = cb)
+```
+"
 function capturevals(key::Symbol, ::Type{T} = Any) where T
   xs = T[]
   function innercap(data)
