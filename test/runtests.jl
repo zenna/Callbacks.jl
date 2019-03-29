@@ -3,15 +3,15 @@ using Callbacks
 using Lens
 
 struct Loop end
-function simulation()
+function simulation(n)
   x = 0.0
-  while true
+  for i = 1:n
     y = sin(x)
     lens(Loop, (x = x, y = y))
     x += rand()
   end
 end
 
-@leval Loop => plotscalar() simulation()
+@leval Loop => plotscalar() simulation(100)
 
-@leval Loop => (everyn(1000000) → plotscalar()) simulation()
+@leval Loop => (everyn(100) → plotscalar()) simulation(100000)
