@@ -5,6 +5,9 @@ makedocs(
     sitename = "Callbacks",
     format = :html,
     modules = [Callbacks]
+    pages = ["Home" => "index.md"
+             "Library" => "library.md",
+             "Compose" => "cbnode.md"]
 )
 
 # Documenter can also automatically deploy documentation to gh-pages.
