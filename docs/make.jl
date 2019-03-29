@@ -16,3 +16,8 @@ makedocs(
 #=deploydocs(
     repo = "<repository url>"
 )=#
+
+
+deploydocs(
+  repo = "github.com/zenna/Callbacks.jl.git",
+)
