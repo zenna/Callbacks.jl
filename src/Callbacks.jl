@@ -1,4 +1,4 @@
-"Function Compositions"
+"Function Compositions for use in Simulator models"
 module Callbacks
 
 import ProgressMeter
@@ -7,7 +7,6 @@ import UnicodePlots
 include("mmap.jl")    # Helper functions
 include("cbnode.jl")  # Callback node: Tree function structure
 include("error.jl")   # Inf/Nan
-include("stage.jl")
 include("signal.jl")
 include("std.jl")
 include("plot.jl")
