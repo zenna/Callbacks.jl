@@ -5,9 +5,9 @@
 | [![][docs-latest-img]][docs-latest-url] | [![][travis-img]][travis-url] [![][codecov-img]][codecov-url] |
 
 
-Tools for constructing callbacks, and a set of callbacks useful for monitoring/measuring simulations.
+A library of of callbacks useful for monitoring/measuring simulations.
 
-This package is most useful in combination with [Lens](github.com/zenna/Lens.jl).
+This package is most useful in combination with [Lens](http://github.com/zenna/Lens.jl).
 
 The following example will update a UnicodePlot at every time step.
 

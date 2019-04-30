@@ -1,4 +1,4 @@
-"Function Compositions for use in Simulator models"
+"Function compositions for use in Simulator models"
 module Callbacks
 
 import ProgressMeter
@@ -23,8 +23,6 @@ export  mapf,
         stopnanorinf,
         runall,
         handlesignal,
-        HMCStep,
-        IterEnd,
         capturevals
 
 end
