@@ -10,6 +10,7 @@ include("error.jl")   # Inf/Nan
 include("signal.jl")
 include("std.jl")
 include("plot.jl")
+include("io.jl")
 
 export  mapf,
         foreachf,

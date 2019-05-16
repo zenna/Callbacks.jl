@@ -4,6 +4,7 @@ authors = ["Zenna Tavares <zennatavares@gmail.com>"]
 version = "0.1.0"
 
 [deps]
+FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
 Lens = "496038af-b016-571c-b31e-8262695ac102"
 ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
 UnicodePlots = "b8865327-cd53-5732-bb35-84acbb429228"
