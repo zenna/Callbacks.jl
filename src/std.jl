@@ -92,17 +92,12 @@ function showprogress(n)
 end
 
 "Stop if nans or Inf are present (-Inf) still permissible"
-function stopnanorinf(data)
-  if isnan(data.p)
-    println("p is $(data.p)")
-    throw(NaNError())
-    return Stop
-  elseif data.p == Inf
-    println("p is $(data.p)")
-    throw(InfError())
-    return Stop
-  end
-end
+stopnan(x) = isnan(x) && throw(NaNError())
+
+"`stopinf(x)` Error if `x` is Inf"
+stopinf(x) = isinf(x) && throw(InfError())
+
+stopnanorinf(x) = (stopnan(x); stopinf(x))
 
 "Capture a vector of value of type `T`
 
