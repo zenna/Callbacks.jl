@@ -31,7 +31,7 @@ end
 function incsave(path; i = 1, kwargs...)
   function incsave(val)
     incpath = extroot(path, "$i")
-    backupsave(val, incpath, kwargs...)
+    backupsave(val, incpath; kwargs...)
     i += 1
   end
 end
