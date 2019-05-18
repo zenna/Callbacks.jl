@@ -1,5 +1,5 @@
 "Line Plot of  with UnicodePlots"
-function plotscalar(; title = "", display_ = display, LTX::Type{TX} = Float64, LTY::Type{TY} = Float64) where {TX, TY}
+function plotscalar(; title = "", display_ = display, LTX::Type{TX} = Float64, LTY::Type{TY} = Float64, lineplotkwargs...) where {TX, TY}
   xs = TX[]
   ys = TY[]
   maxseen = typemin(TY)
@@ -9,7 +9,7 @@ function plotscalar(; title = "", display_ = display, LTX::Type{TX} = Float64, L
     push!(xs, x)
     push!(ys, y)
     if !isempty(xs)
-      display_(UnicodePlots.lineplot(xs, ys, title = title))
+      display_(UnicodePlots.lineplot(xs, ys; title = title, lineplotkwargs...))
     end
     if y > maxseen
       maxseen = y

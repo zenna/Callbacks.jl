@@ -1,7 +1,8 @@
 # Standard Callbacks
 
 runall(f) = f
-runall(fs::AbstractVector) = (data) -> foreach(f -> handlesignal(f(data)), fs)
+runall(fs::AbstractVector) = (data) -> foreach(f -> f(data), fs)
+runall(x, y, args...) = runall([x, y, args...])
 
 @inline idcb(x) = x
 
