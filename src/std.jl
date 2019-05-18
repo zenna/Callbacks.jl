@@ -8,11 +8,14 @@ runall(x, y, args...) = runall([x, y, args...])
 
 "Higher order function that makes a callback run just once every n"
 function everyn(callback, n::Integer)
+  i = 0
   function everyncb(data)
-    if data.i % n == 0
+    if i % n == 0
+      i = i + 1
       return callback(data)
     else
-      nothing
+      i = i + 1
+      return data
     end
   end
   return everyncb
