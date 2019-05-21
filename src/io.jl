@@ -1,4 +1,4 @@
-using FileIO: save
+import FileIO
 
 export incsave, backupsave, savecb
 
@@ -16,7 +16,7 @@ root(path) = join(split(path, ".")[1:end-1], ".")
 extroot(path, middle; delim = "_") = "$(root(path))$delim$middle.$(ext(path))"
 
 "Save file to `path` using `save(path, data)` backup if necessary"
-function backupsave(val, path; backup = false, verbose = false, save = save, force = true)
+function backupsave(val, path; backup = false, verbose = false, save = FileIO.save, force = true)
   # zt: fixme, this should be recursive
   if backup && isfile(path)
     verbose && println("File $path exists, backing up")
