@@ -27,6 +27,9 @@ export  mapf,
         handlesignal,
         capturevals,
         isconverged,
-        stopconverged
+        stopconverged,
+        savecb,
+        incsave,
+        backupsave
 
 end
